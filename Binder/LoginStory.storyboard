@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LoginVC-->
+        <scene sceneID="zgT-PU-Oiu">
+            <objects>
+                <viewController storyboardIdentifier="LoginStory" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lPe-g8-f6I" customClass="LoginVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kr0-6S-dei"/>
+                        <viewControllerLayoutGuide type="bottom" id="EKw-sQ-qsF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iNw-CY-Dli">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqo-n7-FZs">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aJ3-qj-bdw">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iqo-n7-FZs" firstAttribute="top" secondItem="Kr0-6S-dei" secondAttribute="bottom" id="HaR-fW-H6i"/>
+                            <constraint firstItem="aJ3-qj-bdw" firstAttribute="centerY" secondItem="iNw-CY-Dli" secondAttribute="centerY" id="MUB-rK-c5B"/>
+                            <constraint firstAttribute="trailing" secondItem="Iqo-n7-FZs" secondAttribute="trailing" id="Rrx-ST-yHd"/>
+                            <constraint firstItem="Iqo-n7-FZs" firstAttribute="top" secondItem="Kr0-6S-dei" secondAttribute="bottom" id="SZt-0N-ikA"/>
+                            <constraint firstItem="aJ3-qj-bdw" firstAttribute="centerX" secondItem="iNw-CY-Dli" secondAttribute="centerX" id="Vbi-7n-ck9"/>
+                            <constraint firstItem="Iqo-n7-FZs" firstAttribute="leading" secondItem="iNw-CY-Dli" secondAttribute="leading" id="uA8-OR-gJ2"/>
+                            <constraint firstItem="EKw-sQ-qsF" firstAttribute="top" secondItem="Iqo-n7-FZs" secondAttribute="bottom" id="vwa-wS-ohI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="theActivityIndicatorView" destination="aJ3-qj-bdw" id="bFJ-hF-tpP"/>
+                        <outlet property="theMainWebView" destination="Iqo-n7-FZs" id="HGT-06-qN9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bC9-9l-iGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-118" y="152"/>
+        </scene>
+    </scenes>
+</document>
