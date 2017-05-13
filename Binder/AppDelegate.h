@@ -9,17 +9,46 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@class SWRevealViewController;
+@class AppConfig;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) SWRevealViewController *viewController;
-
-@property (readonly, strong) NSPersistentContainer *persistentContainer;
+@property (nonatomic, strong, nonnull) UIWindow *window;
+@property (strong, nonnull, readonly) NSPersistentContainer *persistentContainer;
+@property (nonatomic, strong) AppConfig *theConfig;
 
 - (void)saveContext;
 
++ (AppDelegate * _Nonnull)sharedInstance;
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

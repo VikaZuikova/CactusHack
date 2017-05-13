@@ -11,8 +11,11 @@
 #import "SplashView.h"
 #import "PeopleViewController.h"
 #import "MainTabBarVC.h"
+#import "AppConfig.h"
 
 #import "BZExtensionsManager.h"
+#import <FirebaseDatabase/FirebaseDatabase.h>
+#import <Firebase/Firebase.h>
 
 @interface AppDelegate ()
 @end
@@ -22,6 +25,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [FIRApp configure];
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
@@ -73,6 +77,11 @@
     [self saveContext];
 }
 
++ (AppDelegate * _Nonnull)sharedInstance
+{
+    return [UIApplication sharedApplication];
+}
+
 
 #pragma mark - Core Data stack
 
@@ -120,3 +129,33 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

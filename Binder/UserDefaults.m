@@ -8,6 +8,8 @@
 
 #import "UserDefaults.h"
 
+#import "User.h"
+
 #import "BZExtensionsManager.h"
 
 @interface UserDefaults ()
@@ -51,6 +53,30 @@
 }
 
 #pragma mark - Setters (Public)
+
+- (void)setTheName:(NSString *)theName
+{
+    [self.theNSUserDefaults setObject:theName forKey:sfs(@selector(theName))];
+    [self.theNSUserDefaults synchronize];
+}
+
+- (void)setTheLastName:(NSString *)theLastName
+{
+    [self.theNSUserDefaults setObject:theLastName forKey:sfs(@selector(theLastName))];
+    [self.theNSUserDefaults synchronize];
+}
+
+- (void)setTheUserId:(NSString *)theUserId
+{
+    [self.theNSUserDefaults setObject:theUserId forKey:sfs(@selector(theUserId))];
+    [self.theNSUserDefaults synchronize];
+}
+
+- (void)setTheUserBitbucketUrl:(NSString *)theUserBitbucketUrl
+{
+    [self.theNSUserDefaults setObject:theUserBitbucketUrl forKey:sfs(@selector(theUserBitbucketUrl))];
+    [self.theNSUserDefaults synchronize];
+}
 
 - (void)setTheAccessToken:(NSString * _Nullable)theAccessToken
 {

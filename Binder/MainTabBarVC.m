@@ -14,8 +14,11 @@
 #import "PresentVC.h"
 #import "PeopleViewController.h"
 #import "MessageListVC.h"
+#import "User.h"
 
 #import "BZExtensionsManager.h"
+#import <FirebaseDatabase/FirebaseDatabase.h>
+#import <Firebase/Firebase.h>
 
 @interface MainTabBarVC ()<UITabBarControllerDelegate>
 
@@ -97,14 +100,13 @@
     double theBarImageSize = 32;
     int offset = 5;
     UIEdgeInsets imageInset = UIEdgeInsetsMake(offset, 0, -offset, 0);
-//    [[UITabBar appearance] setBackgroundImage:[UIImage new]];
-//    UIToolbar* blurredView = [[UIToolbar alloc] initWithFrame:self.tabBar.bounds];
-//    [blurredView setBarStyle:UIBarStyleDefault];
-//    [self.tabBar insertSubview:blurredView atIndex:0];
 
     MessageListVC *vc = [MessageListVC new];
     UINavigationController *theMessagesVCNav = [[UINavigationController alloc] initWithRootViewController:vc];
-    UITabBarItem *theMessagesTabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithImage:[UIImage getImageNamed:@"message"]  scaledToSize:CGSizeMake(theBarImageSize, theBarImageSize)] tag:2];
+    UITabBarItem *theMessagesTabBarItem = [[UITabBarItem alloc]
+                                           initWithTitle:nil
+                                           image:[UIImage imageWithImage:[UIImage getImageNamed:@"message"]  scaledToSize:CGSizeMake(theBarImageSize, theBarImageSize)]
+                                           tag:2];
     theMessagesVCNav.tabBarItem = theMessagesTabBarItem;
     [theViewControllersMutableArray addObject:theMessagesVCNav];
     theMessagesVCNav.tabBarItem.imageInsets = imageInset;
