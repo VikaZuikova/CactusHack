@@ -48,7 +48,7 @@
         _theUserPuctureUrl = theDict[@"image_url"];
         _thePosition = theDict[@"speciality"];
         _theCompany = theDict[@"place_of_work"];
-        _theLinkedInProfileUrl = theDict[@"siteStandardProfileRequest"][@"url"];
+        _theLinkedInProfileUrl = theDict[@"linkedIn_url"];
         UserLocation *theUserLocation = [UserLocation new];
         theUserLocation.theLatitude = [[NSString stringWithFormat:@"%@", theDict[@"latitude"]] doubleValue];
         theUserLocation.theLatitude = [[NSString stringWithFormat:@"%@", theDict[@"latitude"]] doubleValue];

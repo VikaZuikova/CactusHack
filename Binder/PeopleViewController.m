@@ -25,6 +25,7 @@ static NSString * const cellIdentifier = @"peopleCell";
 
 @property (nonatomic, strong) UISearchController *theController;
 @property (nonatomic, strong, nullable) NSArray<User *> *theUserList;
+@property (nonatomic, strong, nullable) NSArray<User *> *theFilterList;
 @property (nonatomic, strong) GetNearbyUsersTask *theNearbyTask;
 
 @end
@@ -53,6 +54,7 @@ static NSString * const cellIdentifier = @"peopleCell";
         [BZExtensionsManager methodAsyncMainWithBlock:^
         {
             self.theUserList = theNewList;
+            [self methodFilterList];
             [self.tablePeopleView reloadData];
         }];
     }
@@ -144,6 +146,11 @@ static NSString * const cellIdentifier = @"peopleCell";
     return cell;
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText;   // called when text changes (including clear)
+{
+    
+}
+
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     ProfileViewController *theVC = [ProfileViewController new];
@@ -171,6 +178,15 @@ static NSString * const cellIdentifier = @"peopleCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80;
+}
+
+- (void)methodFilterList
+{
+    NSString *theTex = self.theController.searchBar.text;
+    if (theTex && ![theTex isEqualToString:@""])
+    {
+        
+    }
 }
 
 @end
