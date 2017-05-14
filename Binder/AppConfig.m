@@ -10,6 +10,7 @@
 
 #import "User.h"
 #import "UserDefaults.h"
+#import "LocationManager.h"
 
 #import "BZExtensionsManager.h"
 
@@ -32,25 +33,26 @@
     self = [super init];
     if (self)
     {
-        
+        [self methodInitAppConfig];
     }
     return self;
 }
 
 - (void)methodInitAppConfig
 {
-    _theUser = [[User alloc] initWithUserDefaults:[UserDefaults sharedInstance]];
+    self.theUser = [[User alloc] initWithUserDefaults:[UserDefaults sharedInstance]];
 }
 
 #pragma mark - Setters (Public)
 
 - (void)setTheUser:(User *)theUser
 {
-    if (theUser)
+    if (!theUser)
     {
         return;
     }
     _theUser = theUser;
+    _theLocationManager = [[LocationManager alloc] initWithUser:_theUser];
     for (id<AppConfigDelegate> theDelegate in self.theListeners)
     {
         if ([theDelegate respondsToSelector:@selector(userDidAuthorized:)])

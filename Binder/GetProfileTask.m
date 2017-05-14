@@ -21,10 +21,12 @@
 - (void)methodStartWithAccessToken:(NSString * _Nonnull)theAccessToken
                         completion:(void (^_Nonnull)(NSDictionary * _Nullable theDictionary, NSError * _Nullable theError))theCompletion
 {
-    NSString *url= [NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~?oauth2_access_token=%@&format=json", theAccessToken];
+    NSString *url= [NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(id,picture-url,first-name,last-name,headline,site-standard-profile-request)?oauth2_access_token=%@&format=json", theAccessToken];
+    NSURL *theUrl = [NSURL URLWithString:url];
+    NSLog(@"%@", theUrl);
     BZURLSession *theSession = [BZURLSession new];
     self.theSession = theSession;
-    [theSession methodStartDownloadTaskWithURL:[NSURL URLWithString:url]
+    [theSession methodStartDownloadTaskWithURL:theUrl
                                  progressBlock:nil completionBlockWithData:^(NSData * _Nullable data, NSError * _Nullable theError)
     {
         if (theError)

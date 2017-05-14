@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong, nullable) NSString *theAccessToken;
 @property (nonatomic, strong, nullable) NSString *theName;
+@property (nonatomic, strong, nullable) NSString *theUserPictureUrl;
 @property (nonatomic, strong, nullable) NSString *theLastName;
 @property (nonatomic, strong, nullable) NSString *theUserId;
 @property (nonatomic, strong, nullable) NSString *theUserBitbucketUrl;
@@ -21,6 +22,8 @@
 @property (nonatomic, strong, nullable) NSString *theWorkPlace;
 
 + (UserDefaults * _Nonnull)sharedInstance;
+
+- (void)methodSaveUser:(User * _Nonnull)theUser;
 
 @end
 

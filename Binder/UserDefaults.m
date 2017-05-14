@@ -54,6 +54,18 @@
 
 #pragma mark - Setters (Public)
 
+- (void)setTheWorkPosition:(NSString *)theWorkPosition
+{
+    [self.theNSUserDefaults setObject:theWorkPosition forKey:sfs(@selector(theWorkPosition))];
+    [self.theNSUserDefaults synchronize];
+}
+
+- (void)setTheWorkPlace:(NSString *)theWorkPlace
+{
+    [self.theNSUserDefaults setObject:theWorkPlace forKey:sfs(@selector(theWorkPlace))];
+    [self.theNSUserDefaults synchronize];
+}
+
 - (void)setTheName:(NSString *)theName
 {
     [self.theNSUserDefaults setObject:theName forKey:sfs(@selector(theName))];
@@ -84,11 +96,52 @@
     [self.theNSUserDefaults synchronize];
 }
 
+- (void)setTheUserPictureUrl:(NSString *)theUserPictureUrl
+{
+    [self.theNSUserDefaults setObject:theUserPictureUrl forKey:sfs(@selector(theUserPictureUrl))];
+    [self.theNSUserDefaults synchronize];
+}
+
 #pragma mark - Getters (Public)
+
+- (NSString *)theWorkPlace
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theWorkPlace))];
+}
+
+- (NSString *)theWorkPosition
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theWorkPosition))];
+}
 
 - (NSString *)theAccessToken
 {
     return [self.theNSUserDefaults objectForKey:sfs(@selector(theAccessToken))];
+}
+
+- (NSString *)theLastName
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theLastName))];
+}
+
+- (NSString *)theUserId
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theUserId))];
+}
+
+- (NSString *)theName
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theName))];
+}
+
+- (NSString *)theUserPictureUrl
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theUserPictureUrl))];
+}
+
+- (NSString *)theUserBitbucketUrl
+{
+    return [self.theNSUserDefaults objectForKey:sfs(@selector(theUserBitbucketUrl))];
 }
 
 #pragma mark - Setters (Private)
@@ -106,6 +159,18 @@
 #pragma mark - Delegates ()
 
 #pragma mark - Methods (Public)
+
+- (void)methodSaveUser:(User * _Nonnull)theUser
+{
+    self.theAccessToken = theUser.theAccessToken;
+    self.theLastName = theUser.theLastName;
+    self.theName = theUser.theName;
+    self.theWorkPlace = theUser.theCompany;
+    self.theUserBitbucketUrl = theUser.theLinkedInProfileUrl;
+    self.theUserPictureUrl = theUser.theUserPuctureUrl;
+    self.theWorkPosition = theUser.thePosition;
+    self.theUserId = theUser.theUserID;
+}
 
 #pragma mark - Methods (Private)
 

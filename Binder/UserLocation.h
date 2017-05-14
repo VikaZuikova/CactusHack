@@ -10,4 +10,41 @@
 
 @interface UserLocation : NSObject
 
+@property (nonatomic, assign) double theLongitude;
+@property (nonatomic, assign) double theLatitude;
+@property (nonatomic, strong, nonnull) NSDate *theLastUpdateDate;
+
+- (BOOL)methodIsFresh;
+- (double)methodCountDistanceTo:(UserLocation * _Nonnull)theLocation;
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,10 @@
 @property (nonatomic, strong, nonnull) NSString *theLastName;
 @property (nonatomic, strong, nonnull) NSString *thePosition;
 @property (nonatomic, strong, nonnull) NSString *theCompany;
-@property (nonatomic, strong, nonnull) NSString *theBitbucketUrl;
+@property (nonatomic, strong, nonnull) NSString *theLinkedInProfileUrl;
+@property (nonatomic, strong, nonnull) NSString *theAccessToken;
+@property (nonatomic, strong, nonnull) NSString *theUserPuctureUrl;
+@property (nonatomic, strong, nonnull) NSString *theUserID;
 @property (nonatomic, strong, nullable) UserLocation *theUserLocation;
 
 @end
@@ -30,16 +33,45 @@
 
 #pragma mark - Init & Dealloc
 
-- (instancetype _Nonnull)initWithDictionary:(NSDictionary *)theDict
+- (instancetype _Nonnull)initWithSnapshotDictionary:(NSDictionary * _Nonnull)theDict
 {
     self = [super init];
     if (self)
     {
+        NSLog(@"%@", theDict);
+        if (!theDict || ![theDict isKindOfClass:[NSDictionary class]] )
+        {
+            return self;
+        }
+        _theName = theDict[@"first_name"];
+        _theLastName = theDict[@"last_name"];
+        _theUserPuctureUrl = theDict[@"image_url"];
+        _thePosition = theDict[@"speciality"];
+        _theCompany = theDict[@"place_of_work"];
+        _theLinkedInProfileUrl = theDict[@"siteStandardProfileRequest"][@"url"];
+        UserLocation *theUserLocation = [UserLocation new];
+        theUserLocation.theLatitude = [[NSString stringWithFormat:@"%@", theDict[@"latitude"]] doubleValue];
+        theUserLocation.theLatitude = [[NSString stringWithFormat:@"%@", theDict[@"latitude"]] doubleValue];
+        theUserLocation.theLastUpdateDate = [NSDate dateWithTimeIntervalSince1970:[[NSString stringWithFormat:@"%@", theDict[@"last_update_date"]] doubleValue]];
+    }
+    return self;
+}
+
+- (instancetype _Nonnull)initWithDictionary:(NSDictionary * _Nonnull)theDict withAccessToken:(NSString * _Nonnull)theToken
+{
+    self = [super init];
+    if (self)
+    {
+        NSLog(@"%@", theDict);
+        _theUserID = theDict[@"id"];
         _theName = theDict[@"firstName"];
-        _theLastName = theDict[@"Zinkovich"];
-        _thePosition = [theDict[@"headline"] componentsSeparatedByString:@" - "].firstObject;
-        _theCompany = [theDict[@"headline"] componentsSeparatedByString:@" - "].lastObject;
-        _theBitbucketUrl = theDict[@"siteStandardProfileRequest"][@"url"];
+        _theLastName = theDict[@"lastName"];
+        _theUserPuctureUrl = theDict[@"pictureUrl"];
+        NSString *theHeadline = theDict[@"headline"];
+        _thePosition = [theHeadline componentsSeparatedByString:@"-"].firstObject;
+        _theCompany = [theHeadline componentsSeparatedByString:@"-"].lastObject;
+        _theLinkedInProfileUrl = theDict[@"siteStandardProfileRequest"][@"url"];
+        _theAccessToken = theToken;
     }
     return self;
 }
@@ -57,7 +89,10 @@
         _theLastName = theDefaults.theLastName;
         _thePosition = theDefaults.theWorkPosition;
         _theCompany = theDefaults.theWorkPlace;
-        _theBitbucketUrl = theDefaults.theUserBitbucketUrl;
+        _theLinkedInProfileUrl = theDefaults.theUserBitbucketUrl;
+        _theAccessToken = theDefaults.theAccessToken;
+        _theUserPuctureUrl = theDefaults.theUserPictureUrl;
+        _theUserID = theDefaults.theUserId;
     }
     return self;
 }

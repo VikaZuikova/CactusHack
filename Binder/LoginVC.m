@@ -147,16 +147,21 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
          self.theTask = [GetProfileTask new];
          [self.theTask methodStartWithAccessToken:theStr completion:^(NSDictionary * _Nullable theDictionary, NSError * _Nullable theError)
          {
-             if (theDictionary)
+             [BZExtensionsManager methodAsyncMainWithBlock:^
              {
-                 User *theUser = [[User alloc] initWithDictionary:theDictionary withAccessToken:theStr];
-                 if (theUser)
+                 if (theDictionary)
                  {
-                     [AppDelegate sharedInstance].theConfig.theUser = theUser;
+                     User *theUser = [[User alloc] initWithDictionary:theDictionary withAccessToken:theStr];
+                     if (theUser)
+                     {
+                         [AppDelegate sharedInstance].theConfig.theUser = theUser;
+                         [[UserDefaults sharedInstance] methodSaveUser:theUser];
+                         [self dismissViewControllerAnimated:YES completion:nil];
+                     }
                  }
-             }
+             }];
+
          }];
-         [self dismissViewControllerAnimated:YES completion:nil];
      }];
 
 }

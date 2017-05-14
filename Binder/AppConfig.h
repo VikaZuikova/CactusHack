@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @class User;
+@class LocationManager;
 @protocol AppConfigDelegate;
 
 @interface AppConfig : NSObject
 
 @property (nonatomic, strong, nullable) User *theUser;
+
+@property (nonatomic, strong, nonnull) LocationManager *theLocationManager;
 
 - (void)methodSubscribe:(id<AppConfigDelegate> _Nonnull)theSubscriber;
 - (void)methodUnsubscribe:(id<AppConfigDelegate> _Nonnull)theSubscriber;

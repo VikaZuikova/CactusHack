@@ -83,6 +83,10 @@
 		CE6507CD1E6B7535003A8CF1 /* company.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6507C91E6B7535003A8CF1 /* company.png */; };
 		CE6507D61E6B7F6B003A8CF1 /* PeopleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6507D31E6B7F6B003A8CF1 /* PeopleViewCell.m */; };
 		CE6507D71E6B7F6B003A8CF1 /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6507D51E6B7F6B003A8CF1 /* PeopleViewController.m */; };
+		CE7EF56D1EC8470F008CEA12 /* GetNearbyUsersTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7EF56C1EC8470F008CEA12 /* GetNearbyUsersTask.m */; };
+		CE7EF56F1EC851F9008CEA12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7EF56E1EC851F9008CEA12 /* CoreLocation.framework */; };
+		CE7EF5751EC855DC008CEA12 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7EF5741EC855DC008CEA12 /* LocationManager.m */; };
+		CE7EF5781EC86B96008CEA12 /* AddFireTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7EF5771EC86B96008CEA12 /* AddFireTask.m */; };
 		CEEC07A41E6B082200AE6FCC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC07A31E6B082200AE6FCC /* main.m */; };
 		CEEC07A71E6B082200AE6FCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC07A61E6B082200AE6FCC /* AppDelegate.m */; };
 		CEEC07B01E6B082200AE6FCC /* Int20H.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEEC07AE1E6B082200AE6FCC /* Int20H.xcdatamodeld */; };
@@ -270,6 +274,13 @@
 		CE6507D31E6B7F6B003A8CF1 /* PeopleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewCell.m; sourceTree = "<group>"; };
 		CE6507D41E6B7F6B003A8CF1 /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		CE6507D51E6B7F6B003A8CF1 /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
+		CE7EF56B1EC8470F008CEA12 /* GetNearbyUsersTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetNearbyUsersTask.h; sourceTree = "<group>"; };
+		CE7EF56C1EC8470F008CEA12 /* GetNearbyUsersTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetNearbyUsersTask.m; sourceTree = "<group>"; };
+		CE7EF56E1EC851F9008CEA12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CE7EF5731EC855DC008CEA12 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		CE7EF5741EC855DC008CEA12 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		CE7EF5761EC86B96008CEA12 /* AddFireTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFireTask.h; sourceTree = "<group>"; };
+		CE7EF5771EC86B96008CEA12 /* AddFireTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFireTask.m; sourceTree = "<group>"; };
 		CEEC079F1E6B082200AE6FCC /* Binder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEC07A31E6B082200AE6FCC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEEC07A51E6B082200AE6FCC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -299,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7EF56F1EC851F9008CEA12 /* CoreLocation.framework in Frameworks */,
 				52B0CC7641AA39B54C047BF9 /* libPods-Binder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +335,7 @@
 		1459B441AB435C88953D4E06 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE7EF56E1EC851F9008CEA12 /* CoreLocation.framework */,
 				355ED16FB2C67F6E7680E2E6 /* libPods-Int20H.a */,
 				C23C1BAC0DB99760B1B3B601 /* libPods-Int20HTests.a */,
 				2A6CD6EDBA7019D9B2104928 /* libPods-Int20HUITests.a */,
@@ -659,6 +672,8 @@
 				CEF2DD9C1EC77BEC009679F7 /* UserLocation.m */,
 				CE6507941E6B407A003A8CF1 /* UserDefaults.h */,
 				CE6507951E6B407A003A8CF1 /* UserDefaults.m */,
+				CE7EF5731EC855DC008CEA12 /* LocationManager.h */,
+				CE7EF5741EC855DC008CEA12 /* LocationManager.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -705,6 +720,10 @@
 				CEF2DDA21EC78549009679F7 /* NetworkTask.h */,
 				CEF2DDA31EC7859C009679F7 /* GetProfileTask.h */,
 				CEF2DDA41EC7859C009679F7 /* GetProfileTask.m */,
+				CE7EF56B1EC8470F008CEA12 /* GetNearbyUsersTask.h */,
+				CE7EF56C1EC8470F008CEA12 /* GetNearbyUsersTask.m */,
+				CE7EF5761EC86B96008CEA12 /* AddFireTask.h */,
+				CE7EF5771EC86B96008CEA12 /* AddFireTask.m */,
 			);
 			name = tasks;
 			sourceTree = "<group>";
@@ -784,6 +803,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = LXU9U5V765;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CEEC07BA1E6B082200AE6FCC = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -964,9 +988,11 @@
 				CE51E0241E6BBAC70075C75C /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				CE6507961E6B407A003A8CF1 /* UserDefaults.m in Sources */,
 				CEF2DDA51EC7859C009679F7 /* GetProfileTask.m in Sources */,
+				CE7EF5781EC86B96008CEA12 /* AddFireTask.m in Sources */,
 				CEF2DD9D1EC77BEC009679F7 /* UserLocation.m in Sources */,
 				CE51E0211E6BBAC70075C75C /* JSQMessagesLabel.m in Sources */,
 				CE51E0031E6BBAC70075C75C /* JSQMessagesViewController.m in Sources */,
+				CE7EF56D1EC8470F008CEA12 /* GetNearbyUsersTask.m in Sources */,
 				CE6507B81E6B59E0003A8CF1 /* NSObject+BZExtensions.m in Sources */,
 				CE51E0191E6BBAC70075C75C /* JSQMessagesCollectionView.m in Sources */,
 				CE51E0221E6BBAC70075C75C /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
@@ -996,6 +1022,7 @@
 				CE51E0011E6BBAC70075C75C /* UIImage+JSQMessages.m in Sources */,
 				CE51E0151E6BBAC70075C75C /* JSQMessagesBubbleImage.m in Sources */,
 				CE51E00B1E6BBAC70075C75C /* JSQAudioMediaViewAttributes.m in Sources */,
+				CE7EF5751EC855DC008CEA12 /* LocationManager.m in Sources */,
 				CE6507A31E6B5534003A8CF1 /* SplashView.m in Sources */,
 				CE51E0081E6BBAC70075C75C /* JSQMessagesTimestampFormatter.m in Sources */,
 				CE51E0201E6BBAC70075C75C /* JSQMessagesInputToolbar.m in Sources */,
