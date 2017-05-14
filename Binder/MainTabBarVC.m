@@ -15,12 +15,16 @@
 #import "PeopleViewController.h"
 #import "MessageListVC.h"
 #import "User.h"
+#import "AppConfig.h"
+#import "AppDelegate.h"
 
 #import "BZExtensionsManager.h"
 #import <FirebaseDatabase/FirebaseDatabase.h>
 #import <Firebase/Firebase.h>
 
 @interface MainTabBarVC ()<UITabBarControllerDelegate>
+
+@property (nonatomic, strong, nullable) User *theUser;
 
 @end
 
@@ -129,7 +133,8 @@
     
     [self setSelectedIndex:1];
     
-    if (![UserDefaults sharedInstance].theAccessToken)
+    self.theUser = [AppDelegate sharedInstance].theConfig.theUser;
+    if (!self.theUser)
     {
         PresentVC *thePresentVC= [[UIStoryboard storyboardWithName:@"PresentVCStory" bundle:nil] instantiateViewControllerWithIdentifier:@"PresentVCStory"];
         UINavigationController *theNvVC = [[UINavigationController alloc] initWithRootViewController:thePresentVC];

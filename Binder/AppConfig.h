@@ -9,16 +9,21 @@
 #import <Foundation/Foundation.h>
 
 @class User;
+@protocol AppConfigDelegate;
 
 @interface AppConfig : NSObject
 
-@property (nonatomic, strong, nullable, readonly) User *theUser;
+@property (nonatomic, strong, nullable) User *theUser;
+
+- (void)methodSubscribe:(id<AppConfigDelegate> _Nonnull)theSubscriber;
+- (void)methodUnsubscribe:(id<AppConfigDelegate> _Nonnull)theSubscriber;
 
 @end
 
-@protocol <#protocol name#> <NSObject>
+@protocol AppConfigDelegate <NSObject>
 
-<#methods#>
+- (void)userDidAuthorized:(User * _Nonnull)theUser;
+- (void)userUpdateProfile:(User * _Nonnull)theUser;
 
 @end
 

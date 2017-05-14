@@ -10,10 +10,16 @@
 
 #import "UserDefaults.h"
 #import "BZURLSession.h"
+#import "GetProfileTask.h"
+#import "AppConfig.h"
+#import "AppDelegate.h"
+#import "User.h"
 
 #import "BZExtensionsManager.h"
 
 @interface LoginVC () <UIWebViewDelegate>
+
+@property (nonatomic, strong) GetProfileTask *theTask;
 
 @end
 
@@ -138,6 +144,18 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
          NSString *theStr = theResultDictionary[@"access_token"];
          NSLog(@"%@", theStr);
          [UserDefaults sharedInstance].theAccessToken = theStr;
+         self.theTask = [GetProfileTask new];
+         [self.theTask methodStartWithAccessToken:theStr completion:^(NSDictionary * _Nullable theDictionary, NSError * _Nullable theError)
+         {
+             if (theDictionary)
+             {
+                 User *theUser = [[User alloc] initWithDictionary:theDictionary withAccessToken:theStr];
+                 if (theUser)
+                 {
+                     [AppDelegate sharedInstance].theConfig.theUser = theUser;
+                 }
+             }
+         }];
          [self dismissViewControllerAnimated:YES completion:nil];
      }];
 

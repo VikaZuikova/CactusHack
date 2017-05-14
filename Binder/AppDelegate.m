@@ -26,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [FIRApp configure];
+    self.theConfig = [AppConfig new];
     UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window = window;
     
@@ -79,7 +80,7 @@
 
 + (AppDelegate * _Nonnull)sharedInstance
 {
-    return [UIApplication sharedApplication];
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 

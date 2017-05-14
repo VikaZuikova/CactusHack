@@ -20,7 +20,7 @@
 @property (nonatomic, strong, nonnull, readonly) NSString *theBitbucketUrl;
 @property (nonatomic, strong, nullable, readonly) UserLocation *theUserLocation;
 
-- (instancetype _Nonnull)initWithDictionary:(NSDictionary * _Nonnull)theDict;
+- (instancetype _Nonnull)initWithDictionary:(NSDictionary * _Nonnull)theDict withAccessToken:(NSString * _Nonnull)theToken;
 - (instancetype _Nullable)initWithUserDefaults:(UserDefaults * _Nonnull)theDefaults;
 - (void)methodBindLocation:(UserLocation * _Nonnull)theLocation;
 - (void)methodUpdateProfile;

@@ -15,7 +15,7 @@
 
 @interface AppConfig ()
 
-@property (nonatomic, strong, nullable) User *theUser;
+@property (nonatomic, strong) NSHashTable<id<AppConfigDelegate>> *theListeners;
 
 @end
 
@@ -44,6 +44,22 @@
 
 #pragma mark - Setters (Public)
 
+- (void)setTheUser:(User *)theUser
+{
+    if (theUser)
+    {
+        return;
+    }
+    _theUser = theUser;
+    for (id<AppConfigDelegate> theDelegate in self.theListeners)
+    {
+        if ([theDelegate respondsToSelector:@selector(userDidAuthorized:)])
+        {
+            [theDelegate userDidAuthorized:theUser];
+        }
+    }
+}
+
 #pragma mark - Getters (Public)
 
 #pragma mark - Setters (Private)
@@ -61,6 +77,31 @@
 #pragma mark - Delegates ()
 
 #pragma mark - Methods (Public)
+
+- (void)methodSubscribe:(id<AppConfigDelegate> _Nonnull)theListener
+{
+    if (!theListener)
+    {
+        return;
+    }
+    if (!self.theListeners)
+    {
+        self.theListeners = [NSHashTable weakObjectsHashTable];
+    }
+    if (![self.theListeners containsObject:theListener])
+    {
+        [self.theListeners addObject:theListener];
+    }
+}
+
+- (void)methodUnsubscribe:(id<AppConfigDelegate> _Nonnull)theListener
+{
+    if (!theListener || !self.theListeners)
+    {
+        return;
+    }
+    [self.theListeners removeObject:theListener];
+}
 
 #pragma mark - Methods (Private)
 
